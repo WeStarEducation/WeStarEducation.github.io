@@ -36,6 +36,7 @@
 
 .footer{
     font-size: 50;
+    margin-bottom: 0px;
 }
 
 .footer-sm{
@@ -59,21 +60,13 @@
     height: 180px;
     padding-top: 50px;
     padding-bottom:50px;
+    /*
     border-style: solid;
     border-width: thick;
-    border-color: #A6A6A6;
+    border-color: #A6A6A6;*/
 }
 
-.work-block{
-    font-size: 40;
-    height: 180px;
-    padding-top: 40px;
-    padding-bottom:40px;
-    border-style: solid;
-    border-width: thick;
-    border-color: #A6A6A6;
-    background-color: #4F81BD;
-}
+
 
 .work-block p{
     margin-bottom: 0px;
