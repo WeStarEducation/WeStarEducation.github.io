@@ -1,0 +1,43 @@
+<html lang="cn">
+	<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Julia - Number Castle</title>
+	
+	<!--CSS-->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/NumberCastle.css" rel="stylesheet">
+
+    <!--JavaScript-->
+    <script src="js/NumberCastle.js"></script>
+    
+    </head>
+    <body>
+		<div class="container text-center">
+            <div class="mt-5">
+                <h1>NumberCastle</h1>
+                <div class="score row">
+                    <div class="col-md-3 text-right b-score" id="ai-score"></div>
+                    <div class="col-md-1" id="ai-add"></div>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-3 text-right b-score" id="player-score"></div>
+                    <div class="col-md-1" id="player-add"></div>
+                </div>
+                <div class="info row">
+                    <div class="ai-info col-md-4">Computer</div>
+                    <div class="blank col-md-4"></div>
+                    <div class="player-info col-md-4">Player</div>
+                </div>
+                <div class="number-block row">
+                    <div class="block col-md-4" id="block1"></div>
+                    <div class="block col-md-4" id="block2"></div>
+                    <div class="block col-md-4" id="player-block"></div>
+                </div>
+                <div class="input-field mt-3">
+                    Your Input:
+                    <input type="number" id="input" name="quantity" min="1" max="9">
+                    <button id="btn" onclick="readInput()">Start</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
