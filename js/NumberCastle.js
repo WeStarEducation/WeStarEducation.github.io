@@ -2,6 +2,7 @@ var MAX_SCORE = 20;
 var MAX_BLOCK = 3;
 var WAIT_TIME = 10;
 
+var round = 0;
 var winner = 0;  //player = 1, ai = 2
 var win = false;
 var ai_input = 0;
@@ -12,16 +13,16 @@ var timer;
 var count_down;
 
 
-window.onload = function () {
-    start();
-
-}
 
 function start(){
     ai_score = MAX_SCORE;
     player_score = MAX_SCORE;
+    round = 0;
     document.getElementById("ai-score").innerText = ai_score;
     document.getElementById("player-score").innerText = player_score;
+    document.getElementById("restart").hidden = true;
+    document.getElementById('record').innerHTML = "";
+    insertRow(0, "-", "-", ai_score, player_score);
     win = false;
     clearInterval(timer);
     startRound();
@@ -29,6 +30,8 @@ function start(){
 }
 
 function startRound(){
+    round += 1;
+    document.getElementById("round").innerText = "Round "+ round;
     document.getElementById("btn").disabled = false;
     if (ai_score >= 9){
         ai_input = getRndInteger(1,9);
@@ -38,6 +41,12 @@ function startRound(){
     document.getElementById("player-block").innerText = "";
     document.getElementById("block2").innerText = "";
     document.getElementById("block1").innerText = "*";
+
+    if (player_score >= 9){
+        document.getElementById("prompt").innerText = "Choose a number between 1 - 9: ";
+    }else{
+        document.getElementById("prompt").innerText = "Choose a number between 1 - " + player_score + ": ";
+    }
     setTimer();
     
 }
@@ -99,6 +108,7 @@ function check(){
         }
         document.getElementById("ai-score").innerText = ai_score;
         document.getElementById("player-score").innerText = player_score;
+        insertRow(round, ai_input, player_input, ai_score, player_score);
         
         if (ai_score <= 0){
             setWinner(1);
@@ -129,4 +139,19 @@ function setWinner(winner){
 
     }
     document.getElementById("btn").disabled = true;
+    document.getElementById("restart").hidden = false;
+}
+
+function insertRow(round, c_input, p_input, c_score, p_score){
+	var row = document.getElementById('record').insertRow(0);
+	var round_number = row.insertCell(0);
+    var computer_input = row.insertCell(1);
+    var player_input = row.insertCell(2);
+    var computer_score = row.insertCell(3);
+    var player_score = row.insertCell(4);
+	round_number.innerHTML = "Round "+round;
+    computer_input.innerHTML = c_input;
+    player_input .innerHTML =  p_input;
+    computer_score .innerHTML =  c_score;
+    player_score .innerHTML =  p_score;
 }

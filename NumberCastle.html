@@ -15,6 +15,9 @@
 		<div class="container text-center">
             <div class="mt-5">
                 <h1>NumberCastle</h1>
+                <div class="round mt-4" id="round">
+                    Round 0
+                </div>
                 <div class="score row">
                     <div class="col-md-3 text-right b-score" id="ai-score"></div>
                     <div class="col-md-1" id="ai-add"></div>
@@ -33,9 +36,31 @@
                     <div class="block col-md-4" id="player-block"></div>
                 </div>
                 <div class="input-field mt-3">
-                    Your Input:
+                    <span id="prompt">Choose a number between 1 - 9:</span>
                     <input type="number" id="input" name="quantity" min="1" max="9">
-                    <button id="btn" onclick="readInput()">Start</button>
+                    <button id="btn" class="btn btn-sm btn-outline-secondary" onclick="readInput()" disabled=true>Click!</button>
+                </div>
+                <div class="start-button mt-2">
+                    <button id="restart" class="btn btn-secondary" onclick="start()">Game Start</button>
+                    
+                </div>
+                <div class="record mt-5">
+                    <table class="table table-striped table-sm" >
+                        <h3>Record</h3>
+                        <thead>
+                            <tr>
+                                <th>Round</th>
+                                <th>Computer Input</th>
+                                <th>Player Input</th>
+                                <th>Computer Score</th>
+                                <th>Player Score</th>
+                            </tr>
+                        </thead>
+                        <tbody id="record">
+                           
+                        </tbody>
+                    </table>
+
                 </div>
             </div>
         </div>
