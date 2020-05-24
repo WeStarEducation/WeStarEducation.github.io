@@ -12,6 +12,9 @@ var player_score;
 var timer;
 var count_down;
 
+window.onload = function(){
+    buttonDisabled(true);
+}
 
 
 function start(){
@@ -32,12 +35,12 @@ function start(){
 function startRound(){
     round += 1;
     document.getElementById("round").innerText = "Round "+ round;
-    document.getElementById("btn").disabled = false;
     if (ai_score >= 9){
         ai_input = getRndInteger(1,9);
     }else{
         ai_input = getRndInteger(1, ai_score);
     }
+    buttonDisabled(false);
     document.getElementById("player-block").innerText = "";
     document.getElementById("block2").innerText = "";
     document.getElementById("block1").innerText = "*";
@@ -58,23 +61,25 @@ function setTimer(){
 
 function runTimer(){
     count_down--;
-    document.getElementById("player-block").innerText = count_down;
+    document.getElementById("block2").innerText = count_down;
     if (count_down == 0){
+        buttonDisabled(true);
         clearInterval(timer);
         setWinner(2);
         
     }
 }
 
-function readInput(){
-    let userinput = parseInt(document.getElementById("input").value);
-    if(isNaN(userinput) || userinput > 9 || userinput < 1 || userinput > player_score){
-        return;
+function readInput(userinput){
+    buttonDisabled(true);
+    if(userinput > player_score){
+        player_input = player_score;
+    }else{
+        player_input = userinput;
     }
-    document.getElementById("btn").disabled = true;
     clearInterval(timer);
-    player_input = userinput;
     document.getElementById("player-block").innerText = "*";
+    document.getElementById("block2").innerText = "";
     check();
 }
 
@@ -83,7 +88,6 @@ function check(){
     setTimeout(function(){
         document.getElementById("block1").innerText = ai_input;
         document.getElementById("player-block").innerText = player_input;
-        document.getElementById("input").value = "";
 
         if(player_input + ai_input == 10){
             if(player_input > ai_input){
@@ -94,6 +98,8 @@ function check(){
                 player_score += ai_input;
                 ai_score -= ai_input;
                 document.getElementById("block2").innerText = "Player win this turn";
+            }else{
+                document.getElementById("block2").innerText = "Draw";
             }
         }else{
             if(player_input < ai_input){
@@ -104,6 +110,8 @@ function check(){
                 player_score += ai_input;
                 ai_score -= ai_input;
                 document.getElementById("block2").innerText = "Player win this turn";
+            }else{
+                document.getElementById("block2").innerText = "Draw";
             }
         }
         document.getElementById("ai-score").innerText = ai_score;
@@ -138,7 +146,6 @@ function setWinner(winner){
         document.getElementById("block2").innerText = "Computer wins!";
 
     }
-    document.getElementById("btn").disabled = true;
     document.getElementById("restart").hidden = false;
 }
 
@@ -154,4 +161,22 @@ function insertRow(round, c_input, p_input, c_score, p_score){
     player_input .innerHTML =  p_input;
     computer_score .innerHTML =  c_score;
     player_score .innerHTML =  p_score;
+}
+
+function buttonDisabled(bool){
+    if (bool == true){
+        for(let i=1;i<10;i++){
+            document.getElementById(i).disabled = true;
+        }
+    }else{
+        let upboundary;
+        if (player_score > 9){
+            upboundary = 9;
+        }else{
+            upboundary = player_score;
+        }
+        for(let i=1;i<=upboundary;i++){
+            document.getElementById(i).disabled = false;
+        }
+    }
 }
