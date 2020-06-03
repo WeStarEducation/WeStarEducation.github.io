@@ -61,6 +61,11 @@
 
 .content{
     font-size: 20;
+    
+}
+
+.double-space{
+    line-height:1.75;
 }
 
 .name-block{
