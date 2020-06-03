@@ -29,10 +29,18 @@
 .blue-header{
     background-color:#00B0F0;
     color:white;
-    height: 102px;
+    height: 103px;
     padding:10px;
     
 }
+
+/* .green-header{
+    background-color:#92d050;
+    color:white;
+    height: 120px;
+    padding:10px;
+    
+} */
 
 .footer{
     font-size: 50;
@@ -52,7 +60,7 @@
 }
 
 .content{
-    font-size: 25;
+    font-size: 20;
 }
 
 .name-block{
