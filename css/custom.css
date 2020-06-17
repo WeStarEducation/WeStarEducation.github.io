@@ -94,3 +94,11 @@
 canvas {
     margin-left: -15px;
 }
+
+.email{
+    position:absolute;
+    left:49%;
+    top:25%;
+    font-size: 30px;
+    font-weight: 500;
+}
